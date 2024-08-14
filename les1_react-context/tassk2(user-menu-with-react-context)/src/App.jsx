@@ -3,7 +3,7 @@ import Header from './Header';
 import { UserContext } from './UserContext';
 
 const App = () => {
-  const [userData] = useState({
+  const [userData, setUserData] = useState({
     name: 'Nikola Tesla',
     avatar_url: 'https://avatars3.githubusercontent.com/u10001'
   });
