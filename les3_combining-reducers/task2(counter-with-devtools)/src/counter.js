@@ -6,11 +6,7 @@ const DECREMENT = "COUNTER/DECREMENT";
 export const increment = () => ({ type: INCREMENT });
 export const decrement = () => ({ type: DECREMENT });
 
-const initialState = {
-  value: 0,
-};
-
-const counter = (state = initialState, action) => {
+const counter = (state = 0, action) => {
   switch (action.type) {
     case INCREMENT:
       return state + 1;
