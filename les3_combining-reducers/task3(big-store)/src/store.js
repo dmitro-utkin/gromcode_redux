@@ -5,9 +5,7 @@ import userReducer from './user.reducer';
 
 export const initialState = {
   language: 'en',
-  user: {
-    user: []
-  },
+  user: null,
   cart: {
     products: []
   }
