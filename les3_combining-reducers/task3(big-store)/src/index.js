@@ -9,9 +9,9 @@ store.subscribe(() => {
 });
 // Dispatch actions
 store.dispatch(setLanguage('es'));
-store.dispatch(addProduct({ id: 1, name: 'apple' }));
-store.dispatch(addProduct({ id: 2, name: 'banana' }));
+store.dispatch(addProduct({ id: 1, name: 'milk' }));
+store.dispatch(addProduct({ id: 2, name: 'apple' }));
 store.dispatch(removeProduct(1));
-store.dispatch(setUser({ name: 'Alice' }));
+store.dispatch(setUser({ name: 'Bob' }));
 store.dispatch(removeUser());
 
