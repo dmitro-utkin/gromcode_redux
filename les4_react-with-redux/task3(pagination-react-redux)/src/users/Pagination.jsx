@@ -7,7 +7,7 @@ const Pagination = ({
   totalItems,
   itemsPerPage,
 }) => {
-  // Создаем переменные на основе свойств компонента
+  
   const isPrevPageAvailable = currentPage > 0;
   const isNextPageAvailable = (currentPage + 1) * itemsPerPage < totalItems;
 
