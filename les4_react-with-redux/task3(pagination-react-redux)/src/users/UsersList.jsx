@@ -10,7 +10,7 @@ const UsersList = ({ users, currentPage, itemsPerPage, goPrev, goNext }) => {
   const usersToDisplay = users.slice(startIndex, endIndex);
 
   return (
-    <div className="users">
+    <ul className="users">
       <Pagination
         goPrev={goPrev}
         goNext={goNext}
@@ -21,7 +21,7 @@ const UsersList = ({ users, currentPage, itemsPerPage, goPrev, goNext }) => {
       {usersToDisplay.map((user) => (
         <User key={user.id} name={user.name} age={user.age} />
       ))}
-    </div>
+    </ul>
   );
 };
 
