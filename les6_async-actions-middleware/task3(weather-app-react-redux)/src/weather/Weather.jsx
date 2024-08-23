@@ -26,12 +26,12 @@ class Weather extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapState = (state) => ({
   cities: state.weather.cities,
 });
 
-const mapDispatchToProps = {
+const mapDispatch = {
   getWeatherData,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Weather);
+export default connect(mapState, mapDispatch)(Weather);
