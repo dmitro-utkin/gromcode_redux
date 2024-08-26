@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 
 const Task = ({ id, text, done, onChange, onDelete }) => {
-  const ListItemClasses = classNames("list-item", { "list-item_done": done }); //`list-item ${done ? "list-item_done" : ''}`;
+  const ListItemClasses = classNames("list-item", { "list-item_done": done });
   return (
     <li className={ListItemClasses}>
       <input
