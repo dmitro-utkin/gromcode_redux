@@ -1,74 +1,33 @@
-import React, { Component } from "react";
-import Task from "./Task.jsx";
+import React from "react";
 import PropTypes from "prop-types";
-import CreateTaskInput from "./CreateTaskInput..jsx";
-import {
-  createTask,
-  fetchTasksList,
-  updateTask,
-  deleteTask,
-} from "../tasksGateway.js";
+import Task from "./Task.jsx";
 
-class TasksList extends Component {
-  state = {
-    tasks: [],
-  };
+const TasksList = ({ tasks, handleTaskStatusChange, handleTaskDelete }) => {
 
-  componentDidMount() {
-    this.fetchTasks();
-  }
+  return (
+    <ul className="list">
+      {tasks.map((task) => (
+        <Task
+          key={task.id}
+          {...task}
+          onDelete={handleTaskDelete}
+          onChange={handleTaskStatusChange}
+        />
+      ))}
+    </ul>
+  );
+};
 
-  fetchTasks = () => {
-    fetchTasksList().then((tasksList) =>
-      this.setState({
-        tasks: tasksList,
-      })
-    );
-  };
-
-  onCreate = (text) => {
-    const newTask = {
-      text,
-      done: false,
-    };
-
-    createTask(newTask).then(() => this.fetchTasks());
-  };
-  handleTaskStatusChange = (id) => {
-    const { done, text } = this.state.tasks.find((task) => task.id === id);
-    const updatedTask = {
-      text,
-      done: !done,
-    };
-
-    updateTask(id, updatedTask).then(() => this.fetchTasks());
-  };
-
-  handleTaskDelete = (id) => {
-    deleteTask(id).then(() => {
-      this.fetchTasks();
-    });
-  };
-
-  render() {
-    const sortedList = this.state.tasks.slice().sort((a, b) => a.done - b.done);
-
-    return (
-      <div className="todo-list">
-        <CreateTaskInput onCreate={this.onCreate} />
-        <ul className="list">
-          {sortedList.map((task) => (
-            <Task
-              key={task.id}
-              {...task}
-              onDelete={this.handleTaskDelete}
-              onChange={this.handleTaskStatusChange}
-            />
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
+TasksList.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      done: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  handleTaskStatusChange: PropTypes.func.isRequired,
+  handleTaskDelete: PropTypes.func.isRequired,
+};
 
 export default TasksList;
