@@ -1,4 +1,3 @@
-// src/users/UsersList.jsx
 import React from "react";
 import { connect } from "react-redux";
 import User from "./User";

@@ -1,4 +1,3 @@
-// src/users/User.jsx
 import React from 'react';
 
 const User = ({ name, age }) => (
